@@ -82,7 +82,6 @@ class TouchAreaManager(private val context: Context, val layout: ConstraintLayou
     }
 
     fun updateTimer(time: Int) {
-        timerDisplayTextView.startAnimation(AnimationUtils.loadAnimation(context, R.anim.anim_fingerboss_blink))
         timerDisplayTextView.text = time.toString()
     }
 

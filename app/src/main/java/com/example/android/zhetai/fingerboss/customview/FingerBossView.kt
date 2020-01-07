@@ -5,11 +5,11 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.drawable.Drawable
 import android.view.MotionEvent
 import android.view.View
 import com.example.android.zhetai.fingerboss.R
 import com.example.android.zhetai.fingerboss.utils.DrawableUtils
+import com.example.android.zhetai.fingerboss.utils.DrawableUtils.getBitmapFromVectorDrawable
 import com.example.android.zhetai.fingerboss.utils.MathUtils
 
 @SuppressLint("ViewConstructor")
@@ -29,7 +29,7 @@ class FingerBossView(context: Context?, private val event: MotionEvent) : View(c
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        //height和width是整个屏幕的？？why
+        //手动调整坐标
         val pxValueX = MathUtils.dip2px(context, 96f) / 2
         val pxValueY = pxValueX * 1.4
         val drawingCenterX = event.rawX - pxValueX
@@ -40,16 +40,8 @@ class FingerBossView(context: Context?, private val event: MotionEvent) : View(c
         }
     }
 
-    private fun getBitmapFromVectorDrawable(drawable: Drawable?): Bitmap? {
-        return if (drawable != null) {
-            val bitmap = Bitmap.createBitmap(
-                drawable.intrinsicWidth,
-                drawable.intrinsicHeight, Bitmap.Config.ARGB_8888
-            )
-            val canvas = Canvas(bitmap)
-            drawable.setBounds(0, 0, canvas.width, canvas.height)
-            drawable.draw(canvas)
-            bitmap
-        } else null
+
+    companion object {
+        const val TAG = "FingerBossView"
     }
 }

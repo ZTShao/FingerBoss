@@ -18,10 +18,11 @@ class FingerBossCountDownTimer(
 
     override fun onTick(millisUntilFinished: Long) {
         Log.v("1", "$millisUntilFinished")
-        if (timeShow > 0) touchAreaManager.updateTimer(timeShow)
+        if (timeShow > 0) {
+            touchAreaManager.updateTimer(timeShow)
+        }
         if (timeShow == 0) {
             touchAreaManager.showResult()
-            timeShow = -1
         }
         timeShow--
     }

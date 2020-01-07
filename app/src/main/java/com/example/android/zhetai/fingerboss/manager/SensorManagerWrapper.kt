@@ -5,7 +5,6 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import android.util.Log
 
 class SensorManagerWrapper(context: Context) : SensorEventListener {
 
@@ -73,5 +72,6 @@ class SensorManagerWrapper(context: Context) : SensorEventListener {
     companion object {
         const val SPEED_TRESHOLD = 5000
         const val UPDATE_INTERVAL_TIME = 50
+        const val TAG = "SensorManagerWrapper"
     }
 }

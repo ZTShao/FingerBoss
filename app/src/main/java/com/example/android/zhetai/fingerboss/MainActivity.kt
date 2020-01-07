@@ -14,8 +14,6 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainConstraintLayout = findViewById(R.id.main_constraint_layout)
-        touchAreaManager =
-                TouchAreaManager(applicationContext, mainConstraintLayout)
-
+        touchAreaManager = TouchAreaManager(applicationContext, mainConstraintLayout)
     }
 }

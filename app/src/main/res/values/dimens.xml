@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="again_button_length">72dp</dimen>
+    <dimen name="count_down_timer_text_size">100dp</dimen>
+
+</resources>

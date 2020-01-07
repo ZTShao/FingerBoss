@@ -3,7 +3,8 @@ package com.example.android.zhetai.fingerboss
 import android.app.Activity
 import android.os.Bundle
 import android.support.constraint.ConstraintLayout
-import com.example.android.zhetai.fingerboss.customview.TouchAreaManager
+import android.widget.ImageView
+import com.example.android.zhetai.fingerboss.manager.TouchAreaManager
 
 class MainActivity : Activity() {
     private lateinit var mainConstraintLayout: ConstraintLayout
@@ -13,6 +14,8 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mainConstraintLayout = findViewById(R.id.main_constraint_layout)
-        touchAreaManager = TouchAreaManager(applicationContext, mainConstraintLayout)
+        touchAreaManager =
+                TouchAreaManager(applicationContext, mainConstraintLayout)
+
     }
 }

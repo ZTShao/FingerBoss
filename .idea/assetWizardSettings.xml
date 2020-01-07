@@ -76,8 +76,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_fingerboss_touch_image" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/SVGassets/圆圈.svg" />
+                            <entry key="outputName" value="ic_again" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/SVGassets/再来一次.svg" />
                           </map>
                         </option>
                       </PersistentState>

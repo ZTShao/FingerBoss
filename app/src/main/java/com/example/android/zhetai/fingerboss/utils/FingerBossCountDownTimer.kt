@@ -2,7 +2,7 @@ package com.example.android.zhetai.fingerboss.utils
 
 import android.os.CountDownTimer
 import android.util.Log
-import com.example.android.zhetai.fingerboss.customview.TouchAreaManager
+import com.example.android.zhetai.fingerboss.manager.TouchAreaManager
 
 class FingerBossCountDownTimer(
     millisInFuture: Long,
@@ -10,26 +10,24 @@ class FingerBossCountDownTimer(
     private val touchAreaManager: TouchAreaManager
 ) :
     CountDownTimer(millisInFuture, countDownInterval) {
-    private var timeShow = TIME_SHOW_RESULT
+    private var timeShow = TIMER
 
     override fun onFinish() {
-        touchAreaManager.recycle()
-        timeShow = TIME_SHOW_RESULT
+        timeShow = TIMER
     }
 
     override fun onTick(millisUntilFinished: Long) {
         Log.v("1", "$millisUntilFinished")
-        if (timeShow > 0) touchAreaManager.updateTimer(timeShow--)
+        if (timeShow > 0) touchAreaManager.updateTimer(timeShow)
         if (timeShow == 0) {
             touchAreaManager.showResult()
             timeShow = -1
         }
+        timeShow--
     }
 
     companion object {
-        private const val TIME_SHOW_RESULT = 3
-        private const val TIME_REFRESH = 3
-        const val TOTAL_COUNT_DOWN_TIME = TIME_REFRESH + TIME_SHOW_RESULT
+        const val TIMER = 3
         const val COUNT_DOWN_INTERVAL = 1
     }
 }

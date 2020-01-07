@@ -1,5 +1,7 @@
 # FingerBoss
 
+![image](https://github.com/ZTShao/FingerBoss/blob/master/icon.png)
+
 使用手指触摸屏幕，最终选择谁获胜的桌游&裁决法宝！
 
 ## 演示

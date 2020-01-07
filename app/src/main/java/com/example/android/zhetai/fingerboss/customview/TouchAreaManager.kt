@@ -1,14 +1,15 @@
 package com.example.android.zhetai.fingerboss.customview
 
 import android.content.Context
-import android.os.CountDownTimer
 import android.support.constraint.ConstraintLayout
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import com.example.android.zhetai.fingerboss.R
-import com.example.android.zhetai.fingerboss.Utils.FingerBossCountDownTimer
+import com.example.android.zhetai.fingerboss.utils.FingerBossCountDownTimer
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -22,6 +23,8 @@ class TouchAreaManager(private val context: Context, val layout: ConstraintLayou
     private val timerDisplayTextView: TextView = layout.findViewById(R.id.text_view_timer_display)
 
     private var fingerBossViews: MutableList<FingerBossView> = ArrayList()
+    private val fingerBossViewAnimation: Animation =
+        AnimationUtils.loadAnimation(context, R.anim.anim_fingerbossview_blink)
 
     private var winnerForThisTime: Int = Int.MAX_VALUE
     private var isReady: Boolean = false
@@ -29,14 +32,13 @@ class TouchAreaManager(private val context: Context, val layout: ConstraintLayou
     init {
         touchArea.setOnTouchListener { _, event ->
             if (!isReady) {
-                Log.v("1", "action${event.action}")
-                when(event.actionMasked){
+                Log.v(TAG, "action${event.action}")
+                when (event.actionMasked) {
 
                     MotionEvent.ACTION_DOWN -> addAFingerBossView(event)
-                    MotionEvent.ACTION_POINTER_DOWN -> addAFingerBossView(event)
                     MotionEvent.ACTION_UP -> {
-                        isReady = true
-                        countDownTimer.start()
+                        /*isReady = true
+                        countDownTimer.start()*/
                     }
                     else -> {
                     }
@@ -47,12 +49,13 @@ class TouchAreaManager(private val context: Context, val layout: ConstraintLayou
     }
 
     private fun addAFingerBossView(event: MotionEvent): Boolean {
-        Log.v("1","addNewFinger${event.rawX}")
-        Log.v("1","addNewFinger${event.rawY}")
+        Log.v(TAG, "addNewFinger${event.rawX}")
+        Log.v(TAG, "addNewFinger${event.rawY}")
 
-        val newFingerBossView = FingerBossView(context,event)
+        val newFingerBossView = FingerBossView(context, event)
         fingerBossViews.add(newFingerBossView)
         layout.addView(newFingerBossView)
+        newFingerBossView.animation = fingerBossViewAnimation
         return true
     }
 
@@ -78,5 +81,9 @@ class TouchAreaManager(private val context: Context, val layout: ConstraintLayou
         fingerBossViews = ArrayList()
         countDownTimer.cancel()
         isReady = false
+    }
+
+    companion object {
+        const val TAG = "TouchAreaManager"
     }
 }

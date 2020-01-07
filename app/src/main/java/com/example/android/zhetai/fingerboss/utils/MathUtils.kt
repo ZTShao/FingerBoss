@@ -1,4 +1,4 @@
-package com.example.android.zhetai.fingerboss.Utils
+package com.example.android.zhetai.fingerboss.utils
 
 import android.content.Context
 
